@@ -51,10 +51,10 @@ const Products = () => {
   };
 
   const fetchFilteredProducts = async (min: number, max: number) => {
+    const token = await fetchToken();
     const response = await fetch(`http://20.244.56.144/test/companies/AMZ/categories/Laptop/products?top=10&minPrice=${min}&maxPrice=${max}`, {
       headers: {
-        'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE3MjIwMzc2LCJpYXQiOjE3MTcyMjAwNzYsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6ImQ4ZGIxOWJiLTc0YzktNGJkYS05NDkyLThmYTM4YzY2OWFkZCIsInN1YiI6ImlzaGl0YS4yMTI1aXQxMDI3QGtpZXQuZWR1In0sImNvbXBhbnlOYW1lIjoiZ29NYXJ0IiwiY2xpZW50SUQiOiJkOGRiMTliYi03NGM5LTRiZGEtOTQ5Mi04ZmEzOGM2NjlhZGQiLCJjbGllbnRTZWNyZXQiOiJDWGRqZkJNcVVPc2tpcFBaIiwib3duZXJOYW1lIjoiSXNoaXRhIEd1cHRhIiwib3duZXJFbWFpbCI6ImlzaGl0YS4yMTI1aXQxMDI3QGtpZXQuZWR1Iiwicm9sbE5vIjoiMjEwMDI5MDEzMDA4MSJ9.Xiu4jI7tFWpy4u3WICh6UUNzqIhA76ju5vnwbm7B-Zw'
-      }
+        'Authorization': `bearer ${token}`,}
     });
     const data = await response.json();
     setProducts(data);
