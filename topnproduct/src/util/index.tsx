@@ -1,3 +1,5 @@
+import { CRED } from "./constant";
+
 export const fetchToken = async (): Promise<string> => {
     const response = await fetch('http://20.244.56.144/test/auth', {
       method: 'POST',
@@ -6,11 +8,8 @@ export const fetchToken = async (): Promise<string> => {
       },
       body: JSON.stringify({
         companyName: "goMart",
-        clientID: "d8db19bb-74c9-4bda-9492-8fa38c669add",
-        clientSecret: "CXdjfBMqUOskipPZ",
-        ownerName: "Ishita Gupta",
-        ownerEmail: "ishita.2125it1027@kiet.edu",
-        rollNo: "2100290130081"
+        ...CRED
+       
       }),
     });
   
